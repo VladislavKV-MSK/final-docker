@@ -21,8 +21,9 @@ FROM alpine:latest
 
 WORKDIR /app
 
-# Копируем все из /app builder в текущую (/app)
-COPY --from=builder /app/ .  
+# Копируем из /app builder в текущую (/app)
+COPY --from=builder /app/main .
+COPY --from=builder /app/tracker.db .  
 
 # Запускаем приложение
 CMD ["./main"]
